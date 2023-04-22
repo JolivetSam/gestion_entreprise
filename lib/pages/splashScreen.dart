@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'Entreprise.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:gestion_entreprise/authentification/login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

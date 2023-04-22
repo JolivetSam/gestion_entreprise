@@ -29,7 +29,7 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
     if(keyForm.currentState!.validate()){
       http.Response response = await http.post(
 
-        Uri.parse("https://electoral-gulf.000webhostapp.com/ajout_entreprise.php"),
+        Uri.parse("http://192.168.100.6/projets/ajout_entreprise.php"),
         body:{
           "nom":"${nom.text}",
           "description":"${description.text}",
@@ -40,18 +40,32 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
 
       );
       if(response.statusCode==200 ){
-        if(jsonDecode(response.body)["code"]!="0"){
-          final snackBar = SnackBar(
-            content: Text("Entreprise enrégistrée"),backgroundColor: Colors.green,
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          Navigator.push(
-            context,MaterialPageRoute(builder: (context) => HomePage())
-          );
-        }else{
-          final snackBar = SnackBar(content: Text("Echec d'enrégistrement"),backgroundColor: Colors.red,);
-        }
+        final snackBar = SnackBar(
+          content: Text("Entreprise enrégistrée"),backgroundColor: Colors.green,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.push(
+            context,MaterialPageRoute(builder: (context) => Entreprise())
+        );
+      }else{
+        final snackBar = SnackBar(
+          content: Text("Entreprise non enrégistrée"),backgroundColor: Colors.red,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
+    /**
+     * if(jsonDecode(response.body)["code"]!="0"){
+        final snackBar = SnackBar(
+        content: Text("Entreprise enrégistrée"),backgroundColor: Colors.green,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.push(
+        context,MaterialPageRoute(builder: (context) => HomePage())
+        );
+        }else{
+        final snackBar = SnackBar(content: Text("Echec d'enrégistrement"),backgroundColor: Colors.red,);
+        }
+     */
 
 
       //icon de chergement du boutton ajouter
@@ -213,13 +227,6 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
                   child: ElevatedButton(
                     onPressed: (){
                       _onsubmit();
-                      final snackBar = SnackBar(
-                        content: Text("Entreprise enrégistrée"),backgroundColor: Colors.green,
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      Navigator.push(
-                          context,MaterialPageRoute(builder: (context) => Entreprise())
-                      );
                     },
                     style: ElevatedButton.styleFrom( padding: EdgeInsets.all(25),backgroundColor: Colors.redAccent),
                     child: Text("Ajouter")

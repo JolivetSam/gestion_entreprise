@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestion_entreprise/serialisation/Serialisation.dart';
 
+import 'ajoutEntreprise.dart';
+
 
 class Entreprise extends StatefulWidget {
   const Entreprise({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class Entreprise extends StatefulWidget {
 
 class _EntrepriseState extends State<Entreprise> {
   final Serialisation  entrepriseData = Serialisation();
+
   @override
   void initState(){
     entrepriseData.fetchEntreprise();
@@ -50,10 +53,10 @@ class _EntrepriseState extends State<Entreprise> {
                                     children: [
                                       Expanded(
                                           child: Image(
-                                            image: NetworkImage('https://africa-baobab.com/${e.image}'),
-                                            height: 100,
                                             width: 100,
+                                            height: 120,
                                             fit: BoxFit.cover,
+                                            image: NetworkImage("http://192.168.100.6/projets/images/${e.image}"),
                                           )
                                       ),
                                     ],
@@ -64,7 +67,7 @@ class _EntrepriseState extends State<Entreprise> {
                                     children: [
                                       Container(
                                         padding: EdgeInsets.all(2.0),
-                                        child: Text('${e.nom_entreprise}',
+                                        child: Text('${e.image}',
                                           maxLines: 1,
                                           style: TextStyle(
                                               overflow: TextOverflow.ellipsis
@@ -103,8 +106,15 @@ class _EntrepriseState extends State<Entreprise> {
                     }
                   }
               ),
-            )
+            ),
           ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.redAccent,
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AjoutEntreprise()));
+        },
+        child: Icon(Icons.add),
+      ),
         );
     }
 }

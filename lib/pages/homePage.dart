@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gestion_entreprise/pages/Entreprise.dart';
 
+import '../authentification/login.dart';
 import 'ajoutEntreprise.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,6 +43,15 @@ class _HomePageState extends State<HomePage> {
                 title: Text("Entreprises"),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Entreprise()));
+                },
+              ),
+              SizedBox(height: 30,),
+              Divider(height: 30,),
+              ListTile(
+                leading: Icon(Icons.group),
+                title: Text("Deconnexion"),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                 },
               ),
             ],
@@ -201,13 +211,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.redAccent,
-        onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AjoutEntreprise()));
-        },
-        child: Icon(Icons.add),
       ),
     );
   }
