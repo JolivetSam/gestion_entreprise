@@ -73,14 +73,13 @@ class _LoginState extends State<Login> {
                 Container(
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.redAccent,
+                    color: Colors.teal,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40),),
                   ),
                   child: Center(
                     child: Text("Connexion",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
                   ),
                 ),
-                //containeur pour recuperer l'image
                 SizedBox(height: 20,),
                 Container(
                   width: 500,
@@ -137,16 +136,20 @@ class _LoginState extends State<Login> {
                 Container(
                   width: 500,
                   padding: EdgeInsets.all(20),
-                  child: ElevatedButton(
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                       onPressed: (){
                         _onsubmit();
                       },
-                      style: ElevatedButton.styleFrom( padding: EdgeInsets.all(25),backgroundColor: Colors.redAccent),
-                      child: Text("Connexion")
+                      color: Colors.teal,
+                      child: Text("Connexion", style: TextStyle(color: Colors.white,fontSize: 16),)
                   ),
                 ),
                 Divider(height: 29,),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Pas encore de compte ? "),
                     GestureDetector(

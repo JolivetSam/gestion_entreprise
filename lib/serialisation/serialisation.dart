@@ -8,12 +8,11 @@ import '../pages/Entreprise.dart';
 class Serialisation{
   Future<List<Entreprises>> fetchEntreprise()async{
     http.Response response=await http.get(
-      Uri.parse("http://192.168.100.6/projets/entreprise.php")
+      Uri.parse("http://192.168.29.164/projets/entreprise.php")
     );
 
     if(response.statusCode==200){
       List entrepriseData =jsonDecode(response.body);
-
       return entrepriseData.map((json)=>Entreprises.fromJson(json)).toList();
     }else{
       throw Exception(

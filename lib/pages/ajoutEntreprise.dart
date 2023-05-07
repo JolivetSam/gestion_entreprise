@@ -29,7 +29,7 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
     if(keyForm.currentState!.validate()){
       http.Response response = await http.post(
 
-        Uri.parse("http://192.168.100.6/projets/ajout_entreprise.php"),
+        Uri.parse("http://192.168.29.164/projets/ajout_entreprise.php"),
         body:{
           "nom":"${nom.text}",
           "description":"${description.text}",
@@ -49,7 +49,7 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
         );
       }else{
         final snackBar = SnackBar(
-          content: Text("Entreprise non enrégistrée"),backgroundColor: Colors.red,
+          content: Text("Entreprise non enrégistrée"),backgroundColor: Colors.teal,
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
@@ -106,7 +106,7 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
                 Container(
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.redAccent,
+                    color: Colors.teal,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40),),
                   ),
                   child: Center(
@@ -135,30 +135,35 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                Container(
-                  width: 500,
-                  padding: EdgeInsets.all(20),
-                  child: Container(
-                    width: 500,
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        MaterialButton(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: MaterialButton(
                           onPressed: (){},
-                          child: Text("Ajouter une photo",style: TextStyle(color: Colors.white),),
-                          color: Colors.redAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Text("Appareil photo",style: TextStyle(color: Colors.white),),
+                          color: Colors.teal,
                         ),
-                        MaterialButton(
+                      ),
+                      Expanded(
+                        child: MaterialButton(
                           onPressed: (){
                             getgall();
                             },
-                          child: Text("Sélectionner une photo",style: TextStyle(color: Colors.white),),
-                          color: Colors.redAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Text("Gallerie",style: TextStyle(color: Colors.white),),
+                          color: Colors.teal,
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   width: 500,
@@ -222,16 +227,22 @@ class _AjoutEntrepriseState extends State<AjoutEntreprise> {
                 ),
                 //le boutton de validation
                 Container(
+
                   width: 500,
-                  padding: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    onPressed: (){
+                  height: 100,
+                  padding: EdgeInsets.all(30),
+
+                  child:MaterialButton(
+                    onPressed: () {
                       _onsubmit();
                     },
-                    style: ElevatedButton.styleFrom( padding: EdgeInsets.all(25),backgroundColor: Colors.redAccent),
-                    child: Text("Ajouter")
-                  ),
-                ),
+                    color: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Text("Ajouter ",style: TextStyle(color: Colors.white,fontSize: 20),
+                    ),
+                  ),)
               ],
             ),
           ),

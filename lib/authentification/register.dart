@@ -33,7 +33,7 @@ class _RegisterState extends State<Register> {
       if(password.text==passwordConfirm.text){
       http.Response response = await http.post(
 
-        Uri.parse("http://192.168.100.6/projets/register_users.php"),
+        Uri.parse("http://192.168.29.164/projets/register_users.php"),
         body:{
           "nom":"${nom.text}",
           "prenom":"${prenom.text}",
@@ -77,7 +77,7 @@ class _RegisterState extends State<Register> {
                 Container(
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.redAccent,
+                    color: Colors.teal,
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(40),bottomLeft: Radius.circular(40),),
                   ),
                   child: Center(
@@ -213,23 +213,26 @@ class _RegisterState extends State<Register> {
                 Container(
                   width: 500,
                   padding: EdgeInsets.all(20),
-                  child: ElevatedButton(
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                       onPressed: (){
                         _onsubmit();
                       },
-                      style: ElevatedButton.styleFrom( padding: EdgeInsets.all(25),backgroundColor: Colors.redAccent),
-                      child: Text("S'enregistrer")
+                      color: Colors.teal,
+                      child: Text("S'enrégistrer", style: TextStyle(color: Colors.white, fontSize: 16),)
                   ),
                 ),
                 Divider(height: 29,),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Déjà enrégistré ? "),
                     GestureDetector(
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>  Login()));
                         },
-
                         child: Text(" Se connecter",style: TextStyle(color:Colors.blue,))
                     )
                   ],

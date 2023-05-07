@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gestion_entreprise/pages/Entreprise.dart';
+import 'package:gestion_entreprise/pages/ajoutEntreprise.dart';
+import 'package:gestion_entreprise/pages/detailspage.dart';
+import 'package:gestion_entreprise/pages/homePage.dart';
 import 'package:gestion_entreprise/pages/splashScreen.dart';
 
 
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Gestion d'entreprise",
-      home: SplashScreen(),
+      home: HomePage(),
     );
   }
 }
